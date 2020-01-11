@@ -3,8 +3,11 @@ import React from 'react';
 class App extends React.Component {
   constructor(props){
     super(props);
+    
+    this.state = {
 
-  }
+    }
+  };
 
   render() {
     return (
@@ -13,6 +16,6 @@ class App extends React.Component {
       </div>
     )
   }
-}
+};
 
 export default App;
