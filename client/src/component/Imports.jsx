@@ -4,3 +4,12 @@ import MyList from './MyList.jsx';
 import Movie from './Movie.jsx';
 import Profile from './Profile,jsx';
 import Suggested from './Suggested.jsx';
+
+module.exports = {
+  Home,
+  Popular,
+  Profile,
+  Movie,
+  MyList,
+  Suggested,
+}
