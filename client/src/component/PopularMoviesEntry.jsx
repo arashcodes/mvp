@@ -20,7 +20,7 @@ class PopularMoviesEntry extends React.Component {
       <li>
         <span>{title}</span>
         <span> - </span>
-        <butoon onClick={() => this.handleClick(id)}>{id}</butoon>
+        <button type="button" onClick={() => this.handleClick(id)}>{id}</button>
       </li>
     );
   }

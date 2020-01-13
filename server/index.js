@@ -15,4 +15,8 @@ app.post('/addMovie', (req, res) => {
   Controller.addMovie(req, res);
 });
 
+app.get('/getMovies', (req, res) => {
+  Controller.getMovies(req, res);
+});
+
 app.listen(port, console.log(`Listening on port ${port}`));
