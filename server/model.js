@@ -12,14 +12,11 @@ const List = mongoose.model('List', listSchema);
 
 module.exports = {
   addMovie: (callback, data) => {
-    // List.update({ movieId: data.id }, { upsert: true }, (err, result) => {
-    //   if (err) {
-    //     callback(err);
-    //   } else {
-    //     callback(null, result);
-    //   }
-    // });
-    List.create({ movieId: data.id }, (err, result) => {
+    const query = { movieId: data.id };
+    const update = { expire: new Date() };
+    const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+
+    List.findOneAndUpdate(query, update, options, (err, result) => {
       if (err) {
         callback(err);
       } else {
