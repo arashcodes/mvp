@@ -25,5 +25,5 @@ module.exports = {
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     'import/no-extraneous-dependencies': 'off',
   },
-  resolve: {extensions: ['.js','.jsx']},
+  // resolve: {extensions: ['.js','.jsx']},
 };

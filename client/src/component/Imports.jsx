@@ -1,15 +1,16 @@
+/* eslint-disable import/extensions */
 import Home from './Home.jsx';
 import Popular from './Popular.jsx';
 import MyList from './MyList.jsx';
 import Movie from './Movie.jsx';
-import Profile from './Profile,jsx';
+import Search from './Search.jsx';
 import Suggested from './Suggested.jsx';
 
-module.exports = {
+export {
   Home,
   Popular,
-  Profile,
+  Search,
   Movie,
   MyList,
   Suggested,
-}
+};
