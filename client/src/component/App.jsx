@@ -10,10 +10,18 @@ class App extends React.Component {
 
     this.state = {
       view: 'home',
+      movie: '',
+      myList: [],
     };
     this.hanldeSearch = this.hanldeSearch.bind(this);
     this.renderView = this.renderView.bind(this);
     this.changeView = this.changeView.bind(this);
+    this.setMovie = this.setMovie.bind(this);
+  }
+
+  setMovie(id) {
+    this.setState({ movie: id });
+    this.changeView('movie');
   }
 
   hanldeSearch(movie) {
@@ -38,10 +46,11 @@ class App extends React.Component {
   renderView() {
     const { view } = this.state;
     if (view === 'home') {
-      return <Home />;
+      return <Home setMovie={this.setMovie} />;
     }
     return <Movie />;
   }
+
 
   render() {
     return (

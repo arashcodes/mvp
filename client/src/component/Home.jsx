@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-console */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable import/extensions */
 /* eslint-disable class-methods-use-this */
@@ -25,7 +27,6 @@ class Home extends React.Component {
     axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key.apiKey}&language=en-US&page=1`)
       .then((res) => {
         const movies = res.data.results;
-        console.log('movies: ', movies);
         this.setState({
           popularMovies: movies,
         });
@@ -37,10 +38,11 @@ class Home extends React.Component {
 
   render() {
     const { popularMovies } = this.state;
+    const { setMovie } = this.props;
     return (
       <div>
         Home page
-        <PopularMovies popularMovies={popularMovies} />
+        <PopularMovies popularMovies={popularMovies} setMovie={setMovie} />
       </div>
     );
   }

@@ -6,9 +6,10 @@ import React from 'react';
 import PopularMoviesEntry from './PopularMoviesEntry.jsx';
 
 const PopularMovies = (props) => (
-  <ul> Popular Movies:
+  <ul>
+    Popular Movies:
     {props.popularMovies.map((item, idx) => (
-      <PopularMoviesEntry popularMovie={item} key={idx} />
+      <PopularMoviesEntry popularMovie={item} key={idx} setMovie={props.setMovie} />
     ))}
   </ul>
 );
