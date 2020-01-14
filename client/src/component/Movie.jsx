@@ -40,7 +40,6 @@ class Movie extends React.Component {
     const id = movie;
     axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${key.apiKey}&language=en-US&page=1`)
       .then((res) => {
-        console.log(res.data.results);
         this.setState({ recommendations: res.data.results });
       })
       .catch((err) => console.log(err));

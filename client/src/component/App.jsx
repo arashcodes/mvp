@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       view: 'home',
       movie: '',
-      myList: [],
+      // myList: [],
     };
     this.hanldeSearch = this.hanldeSearch.bind(this);
     this.renderView = this.renderView.bind(this);

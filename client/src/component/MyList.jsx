@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable react/prefer-stateless-function */
@@ -13,6 +14,7 @@ class MyList extends React.Component {
     };
     this.getMovieDetails = this.getMovieDetails.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleId = this.handleId.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +39,22 @@ class MyList extends React.Component {
     setMovie(id);
   }
 
+  handleId(id) {
+    // const { deleteId } = this.props;
+    // axios.post('/delete', { movieId: id })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .then(() => {
+    //     deleteId(id);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    const { deleteMovie } = this.props;
+    deleteMovie(id);
+  }
+
   render() {
     const { movie } = this.state;
     return (
@@ -44,6 +62,7 @@ class MyList extends React.Component {
         <span>{movie.title}</span>
         <span> - </span>
         <button type="button" onClick={() => this.handleClick(movie.id)}>{movie.id}</button>
+        <button type="button" onClick={() => this.handleId(movie.id)}>Delete</button>
       </li>
     );
   }

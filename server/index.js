@@ -19,4 +19,8 @@ app.get('/getMovies', (req, res) => {
   Controller.getMovies(req, res);
 });
 
+app.post('/delete', (req, res) => {
+  Controller.deleteMovie(req, res);
+});
+
 app.listen(port, console.log(`Listening on port ${port}`));

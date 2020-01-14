@@ -21,6 +21,7 @@ class Home extends React.Component {
     };
     this.getPopularMovies = this.getPopularMovies.bind(this);
     this.getMyList = this.getMyList.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +52,20 @@ class Home extends React.Component {
       });
   }
 
+  deleteMovie(id) {
+    // this.getMyList();
+    axios.post('/delete', { movieId: id })
+      .then((res) => {
+        console.log(res);
+      })
+      .then(() => {
+        this.getMyList();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
     const { popularMovies, myList } = this.state;
     const { setMovie } = this.props;
@@ -61,7 +76,7 @@ class Home extends React.Component {
         My list:
         <ul>
           {myList.map((item, idx) => (
-            <MyList movie={item} key={idx} setMovie={setMovie} />
+            <MyList movie={item} key={idx} setMovie={setMovie} deleteMovie={this.deleteMovie} />
           ))}
         </ul>
       </div>

@@ -33,4 +33,13 @@ module.exports = {
       }
     });
   },
+  deleteMovie: (callback, data) => {
+    List.findOneAndRemove(data, (err, result) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, result);
+      }
+    });
+  },
 };
