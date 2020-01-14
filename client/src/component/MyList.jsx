@@ -51,13 +51,13 @@ class MyList extends React.Component {
     const imageExt = movie.poster_path + '';
     const imageUrl = 'http://image.tmdb.org/t/p/w154' + imageExt;
     return (
-      <li>
+      <div>
+        <img src={imageUrl} alt="" />
         <span>{movie.title}</span>
         <span> - </span>
-        <button type="button" onClick={() => this.handleClick(movie.id)}>{movie.id}</button>
+        <button type="button" onClick={() => this.handleClick(movie.id)}>Details</button>
         <button type="button" onClick={() => this.handleId(movie.id)}>Delete</button>
-        <img src={imageUrl} alt="" />
-      </li>
+      </div>
     );
   }
 }

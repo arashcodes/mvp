@@ -21,12 +21,12 @@ class PopularMoviesEntry extends React.Component {
     const imageExt = poster_path + '';
     const imageUrl = 'http://image.tmdb.org/t/p/w154' + imageExt;
     return (
-      <li>
+      <div>
+        <img src={imageUrl} alt="" />
         <span>{title}</span>
         <span> - </span>
-        <button type="button" onClick={() => this.handleClick(id)}>{id}</button>
-        <img src={imageUrl} alt="" />
-      </li>
+        <button type="button" onClick={() => this.handleClick(id)}>Details</button>
+      </div>
     );
   }
 }
