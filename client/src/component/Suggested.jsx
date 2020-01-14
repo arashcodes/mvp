@@ -3,10 +3,15 @@ import React from 'react';
 
 const Suggested = (props) => {
   const { suggested } = props;
+  // const { id, title, poster_path } = this.props.popularMovie;
+  const imageExt = suggested.poster_path + '';
+  const imageUrl = 'http://image.tmdb.org/t/p/w154' + imageExt;
+  // console.log(suggested);
   return (
-    <li>
+    <div>
+      <img src={imageUrl} alt="" />
       {suggested.title}
-    </li>
+    </div>
   );
 };
 
