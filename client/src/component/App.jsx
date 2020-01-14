@@ -2,6 +2,7 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import { Search, Home, Movie } from './Imports.jsx';
 import key from '../../../keys.js';
 
@@ -66,7 +67,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button type="button" onClick={() => this.changeView('home')}>Home</button>
+        <Button variant="outline-primary" type="button" onClick={() => this.changeView('home')}>Home</Button>
         <Search hanldeSearch={this.hanldeSearch} />
         {this.renderView()}
       </div>

@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable camelcase */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -15,12 +17,15 @@ class PopularMoviesEntry extends React.Component {
   }
 
   render() {
-    const { id, title } = this.props.popularMovie;
+    const { id, title, poster_path } = this.props.popularMovie;
+    const imageExt = poster_path + '';
+    const imageUrl = 'http://image.tmdb.org/t/p/w154' + imageExt;
     return (
       <li>
         <span>{title}</span>
         <span> - </span>
         <button type="button" onClick={() => this.handleClick(id)}>{id}</button>
+        <img src={imageUrl} alt="" />
       </li>
     );
   }

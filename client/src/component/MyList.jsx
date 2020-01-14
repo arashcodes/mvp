@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable camelcase */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
@@ -40,29 +42,21 @@ class MyList extends React.Component {
   }
 
   handleId(id) {
-    // const { deleteId } = this.props;
-    // axios.post('/delete', { movieId: id })
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .then(() => {
-    //     deleteId(id);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
     const { deleteMovie } = this.props;
     deleteMovie(id);
   }
 
   render() {
     const { movie } = this.state;
+    const imageExt = movie.poster_path + '';
+    const imageUrl = 'http://image.tmdb.org/t/p/w154' + imageExt;
     return (
       <li>
         <span>{movie.title}</span>
         <span> - </span>
         <button type="button" onClick={() => this.handleClick(movie.id)}>{movie.id}</button>
         <button type="button" onClick={() => this.handleId(movie.id)}>Delete</button>
+        <img src={imageUrl} alt="" />
       </li>
     );
   }
