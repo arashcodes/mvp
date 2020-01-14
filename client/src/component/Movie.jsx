@@ -13,6 +13,7 @@ class Movie extends React.Component {
     this.state = {
       movie: '',
       recommendations: [],
+      youtubeKey: ''
     };
 
     this.getMovie = this.getMovie.bind(this);
@@ -28,17 +29,17 @@ class Movie extends React.Component {
   getMovie() {
     const { movie } = this.props;
     const id = movie;
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key.apiKey}&language=en-US`)
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key.apiKey}&language=en-US&page=1&append_to_response=videos`)
       .then((res) => res.json())
       .then((res) => {
-        this.setState({ movie: res });
+        this.setState({ movie: res, youtubeKey: res.videos.results[0].key });
       });
   }
 
   getRecommendations() {
     const { movie } = this.props;
     const id = movie;
-    axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${key.apiKey}&language=en-US&page=1`)
+    axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${key.apiKey}&language=en-US`)
       .then((res) => {
         this.setState({ recommendations: res.data.results });
       })
@@ -51,10 +52,13 @@ class Movie extends React.Component {
   }
 
   render() {
-    const { movie, recommendations } = this.state;
+    const { movie, recommendations, youtubeKey } = this.state;
+    const trailer = 'https://www.youtube.com/embed/' + youtubeKey;
     return (
       <div>
         {movie.title}
+        <p>Overview: {movie.overview}</p>
+        <iframe title="trailer" width="560" height="315" src={trailer} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" />
         <button type="button" onClick={() => this.handleAdd(movie.id)}>Add to my list</button>
         <br />
         <br />
