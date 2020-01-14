@@ -71,9 +71,8 @@ class Home extends React.Component {
     const { setMovie } = this.props;
     return (
       <div>
-        Home page
         <PopularMovies popularMovies={popularMovies} setMovie={setMovie} />
-        My list:
+        <h1>My list:</h1>
         <ul>
           {myList.map((item, idx) => (
             <MyList movie={item} key={idx} setMovie={setMovie} deleteMovie={this.deleteMovie} />
