@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 /* eslint-disable react/no-unused-state */
@@ -7,6 +8,7 @@
 import React from 'react';
 import axios from 'axios';
 import PopularMovies from './PopularMovies.jsx';
+import MyList from './MyList.jsx';
 import key from '../../../keys.js';
 
 class Home extends React.Component {
@@ -15,12 +17,15 @@ class Home extends React.Component {
 
     this.state = {
       popularMovies: [],
+      myList: [],
     };
     this.getPopularMovies = this.getPopularMovies.bind(this);
+    this.getMyList = this.getMyList.bind(this);
   }
 
   componentDidMount() {
     this.getPopularMovies();
+    this.getMyList();
   }
 
   getPopularMovies() {
@@ -36,13 +41,29 @@ class Home extends React.Component {
       });
   }
 
+  getMyList() {
+    axios.get('/getMovies')
+      .then((res) => {
+        this.setState({ myList: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
-    const { popularMovies } = this.state;
+    const { popularMovies, myList } = this.state;
     const { setMovie } = this.props;
     return (
       <div>
         Home page
         <PopularMovies popularMovies={popularMovies} setMovie={setMovie} />
+        My list:
+        <ul>
+          {myList.map((item, idx) => (
+            <MyList movie={item} key={idx} setMovie={setMovie} />
+          ))}
+        </ul>
       </div>
     );
   }

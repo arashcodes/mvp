@@ -27,9 +27,6 @@ class App extends React.Component {
   }
 
   addToList(id) {
-    // const { myList } = this.state;
-    // myList.push(id);
-    // this.setState({ myList });
     const movie = { movieId: id };
     axios.post('/addMovie', movie)
       .then((res) => {
